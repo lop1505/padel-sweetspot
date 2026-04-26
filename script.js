@@ -302,9 +302,9 @@
 
   function racketImage(shape, label) {
     const images = {
-      round: "ChatGPT Image 26. Apr. 2026, 20_17_42.png",
-      teardrop: "ChatGPT Image 26. Apr. 2026, 20_18_02.png",
-      diamond: "ChatGPT Image 26. Apr. 2026, 20_16_56.png"
+      round: "racket-round.png",
+      teardrop: "racket-teardrop.png",
+      diamond: "racket-diamond.png"
     };
     const spotClass = "sweetspot-marker sweetspot-marker-" + shape;
     return '<figure class="racket-photo racket-photo-' + shape + '">' +
