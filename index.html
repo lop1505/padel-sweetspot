@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Find your ideal padel racket sweetspot in seconds — based on how you actually play." />
+  <meta name="description" content="Finde deinen idealen Padel-Schläger-Sweetspot in Sekunden — basierend darauf, wie du wirklich spielst." />
   <title>Padel Sweetspot Selector</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,7 +66,7 @@
             </label>
 
             <label class="option">
-              <input type="radio" name="hit" value="tear" checked />
+              <input type="radio" name="hit" value="teardrop" checked />
               <span>
                 <strong data-i18n="q1TearTitle">Meistens sauber</strong>
                 <small data-i18n="q1TearCopy">Ich treffe gut, aber nicht immer perfekt.</small>
@@ -97,7 +97,7 @@
             </label>
 
             <label class="option">
-              <input type="radio" name="style" value="tear" checked />
+              <input type="radio" name="style" value="teardrop" checked />
               <span>
                 <strong data-i18n="q2TearTitle">Ausgewogen</strong>
                 <small data-i18n="q2TearCopy">Kontrolle behalten, aber mehr Druck machen.</small>
@@ -128,7 +128,7 @@
             </label>
 
             <label class="option">
-              <input type="radio" name="side" value="tear" checked />
+              <input type="radio" name="side" value="teardrop" checked />
               <span>
                 <strong data-i18n="q3TearTitle">Flexibel / beide Seiten</strong>
                 <small data-i18n="q3TearCopy">Ich brauche ein breites Einsatzfenster.</small>
@@ -148,25 +148,29 @@
         <div class="form-actions">
           <button type="reset" class="secondary-button" data-i18n="resetButton">Zurücksetzen</button>
           <p class="logic-note" data-i18n="logicNote">
-            Sonderregel: Wenn du oft Off-Center triffst, gewinnt Round automatisch.
+            Sonderregel: Wenn du oft Off-Center triffst, gewinnt Rund automatisch.
           </p>
         </div>
       </form>
 
       <aside class="card result-card" aria-live="polite">
         <div class="result-meta">
-          <span class="badge" id="resultBadge">Hybrid</span>
-          <span class="score" id="resultScore">2 / 3 Balance-Signale</span>
+          <span class="badge" id="resultBadge">Tropfen</span>
+          <span class="score" id="resultScore">2 / 3 Signale</span>
         </div>
 
-        <h2 id="resultTitle">Balanced Sweetspot</h2>
+        <h2 id="resultTitle">Tropfenform</h2>
         <p id="resultDescription">
-          Der Sweetspot liegt leicht oberhalb der Mitte. Das ist der beste Kompromiss aus Kontrolle, Fehlerverzeihung und zusätzlicher Power.
+          Tropfenförmige Schläger sitzen zwischen Rund und Diamant. Der Sweetspot liegt leicht oberhalb der Mitte und verbindet Kontrolle mit zusätzlicher Power.
         </p>
 
         <div class="racket-stage" id="racketStage" aria-label="Visualisierung der Sweetspot-Position"></div>
 
         <div class="result-stats">
+          <div>
+            <span data-i18n="statShapeLabel">Form</span>
+            <strong id="statShape">Tropfen</strong>
+          </div>
           <div>
             <span data-i18n="statSpotLabel">Sweetspot</span>
             <strong id="statSpot">leicht erhöht</strong>
@@ -174,10 +178,6 @@
           <div>
             <span data-i18n="statForgivenessLabel">Fehlerverzeihung</span>
             <strong id="statForgiveness">mittel bis gut</strong>
-          </div>
-          <div>
-            <span data-i18n="statTypeLabel">Typ</span>
-            <strong id="statType">Allround / Fortschritt</strong>
           </div>
         </div>
       </aside>

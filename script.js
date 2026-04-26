@@ -1,14 +1,10 @@
 const translations = {
   de: {
+    themeToggle: "Dark",
+    themeToggleLight: "Light",
     pageTitle: "Padel Sweetspot Selector",
     metaDescription:
       "Finde deinen idealen Padel-Schläger-Sweetspot in Sekunden — basierend darauf, wie du wirklich spielst.",
-
-    themeToggle: "Dark",
-    themeToggleLight: "Light",
-
-    themeToggle: "Dark",
-    themeToggleLight: "Light",
 
     heroEyebrow: "Padel Racket Tool",
     heroTitle: "Finde deinen echten Padel Sweetspot",
@@ -50,11 +46,11 @@ const translations = {
 
     resetButton: "Zurücksetzen",
     logicNote:
-      "Sonderregel: Wenn du oft Off-Center triffst, gewinnt Round automatisch.",
+      "Sonderregel: Wenn du oft Off-Center triffst, gewinnt Rund automatisch.",
 
+    statShapeLabel: "Form",
     statSpotLabel: "Sweetspot",
     statForgivenessLabel: "Fehlerverzeihung",
-    statTypeLabel: "Typ",
 
     footerAuthor: "Built by Patrick Lohmann",
     footerLicense: "MIT License",
@@ -68,31 +64,34 @@ const translations = {
 
     results: {
       round: {
-        badge: "Round",
-        title: "Control Sweetspot",
+        badge: "Rund",
+        title: "Runde Form",
         description:
-          "Der Sweetspot liegt zentral und ist groß. Ideal, wenn du Fehler minimieren, ruhiger aufbauen und kontrollierter spielen willst.",
+          "Runde Schläger haben eine nahezu kreisförmige Kopfform mit großem, zentralem Sweetspot. Das macht sie besonders kontrolliert und fehlerverzeihend.",
+        shape: "Rund",
         spot: "zentral & groß",
         forgiveness: "sehr hoch",
-        type: "Kontrolle / Sicherheit"
+        label: "Rund"
       },
-      tear: {
-        badge: "Hybrid",
-        title: "Balanced Sweetspot",
+      teardrop: {
+        badge: "Tropfen",
+        title: "Tropfenform",
         description:
-          "Der Sweetspot liegt leicht oberhalb der Mitte. Das ist der beste Kompromiss aus Kontrolle, Fehlerverzeihung und zusätzlicher Power.",
+          "Tropfenförmige Schläger sind oben sichtbar verlängert, aber nicht so spitz wie Diamantformen. Der Sweetspot liegt leicht über der Mitte und verbindet Kontrolle mit Power.",
+        shape: "Tropfen",
         spot: "leicht erhöht",
         forgiveness: "mittel bis gut",
-        type: "Allround / Fortschritt"
+        label: "Tropfen"
       },
       diamond: {
-        badge: "Power",
-        title: "Attack Sweetspot",
+        badge: "Diamant",
+        title: "Diamantform",
         description:
-          "Der Sweetspot liegt höher im Schlägerkopf und ist kleiner. Das bringt mehr Power, bestraft aber unsaubere Treffer stärker.",
+          "Diamantförmige Schläger haben eine kantigere, kopflastige Silhouette mit hohem Sweetspot. Sie liefern maximale Power, verlangen aber saubere Treffer.",
+        shape: "Diamant",
         spot: "hoch & kleiner",
         forgiveness: "niedriger",
-        type: "Power / Angriff"
+        label: "Diamant"
       }
     }
   },
@@ -100,13 +99,9 @@ const translations = {
   en: {
     themeToggle: "Dark",
     themeToggleLight: "Light",
-
     pageTitle: "Padel Sweetspot Selector",
     metaDescription:
       "Find your ideal padel racket sweetspot in seconds — based on how you actually play.",
-
-    themeToggle: "Dark",
-    themeToggleLight: "Light",
 
     heroEyebrow: "Padel Racket Tool",
     heroTitle: "Find Your Real Padel Sweetspot",
@@ -150,9 +145,9 @@ const translations = {
     logicNote:
       "Special rule: If you often hit off-center, Round wins automatically.",
 
+    statShapeLabel: "Shape",
     statSpotLabel: "Sweetspot",
     statForgivenessLabel: "Forgiveness",
-    statTypeLabel: "Type",
 
     footerAuthor: "Built by Patrick Lohmann",
     footerLicense: "MIT License",
@@ -167,30 +162,33 @@ const translations = {
     results: {
       round: {
         badge: "Round",
-        title: "Control Sweetspot",
+        title: "Round Shape",
         description:
-          "The sweetspot is large and centered. Ideal if you want to reduce mistakes, build calmly and play with more control.",
+          "Round rackets have an almost circular head shape with a large, centered sweetspot. This makes them especially controlled and forgiving.",
+        shape: "Round",
         spot: "centered & large",
         forgiveness: "very high",
-        type: "Control / safety"
+        label: "Round"
       },
-      tear: {
-        badge: "Hybrid",
-        title: "Balanced Sweetspot",
+      teardrop: {
+        badge: "Teardrop",
+        title: "Teardrop Shape",
         description:
-          "The sweetspot sits slightly above the center. It is the best compromise between control, forgiveness and extra power.",
+          "Teardrop rackets are visibly extended toward the top, but not as sharp as diamond shapes. The sweetspot sits slightly above center, combining control with power.",
+        shape: "Teardrop",
         spot: "slightly higher",
         forgiveness: "medium to good",
-        type: "All-round / progress"
+        label: "Teardrop"
       },
       diamond: {
-        badge: "Power",
-        title: "Attack Sweetspot",
+        badge: "Diamond",
+        title: "Diamond Shape",
         description:
-          "The sweetspot sits higher in the racket head and is smaller. It gives more power, but punishes off-center hits more strongly.",
+          "Diamond rackets have a more angular, head-heavy silhouette with a high sweetspot. They deliver maximum power, but demand cleaner contact.",
+        shape: "Diamond",
         spot: "high & smaller",
         forgiveness: "lower",
-        type: "Power / attack"
+        label: "Diamond"
       }
     }
   }
@@ -206,9 +204,9 @@ const resultBadge = document.querySelector("#resultBadge");
 const resultScore = document.querySelector("#resultScore");
 const resultTitle = document.querySelector("#resultTitle");
 const resultDescription = document.querySelector("#resultDescription");
+const statShape = document.querySelector("#statShape");
 const statSpot = document.querySelector("#statSpot");
 const statForgiveness = document.querySelector("#statForgiveness");
-const statType = document.querySelector("#statType");
 const racketStage = document.querySelector("#racketStage");
 
 function getCopy() {
@@ -217,11 +215,7 @@ function getCopy() {
 
 function getPreferredTheme() {
   const storedTheme = localStorage.getItem("sweetspotTheme");
-
-  if (storedTheme) {
-    return storedTheme;
-  }
-
+  if (storedTheme) return storedTheme;
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
@@ -252,18 +246,17 @@ function setLanguage(language) {
     element.textContent = getCopy()[key];
   });
 
-  setTheme(document.documentElement.dataset.theme || getPreferredTheme());
-
   languageButtons.forEach((button) => {
     button.classList.toggle("active", button.dataset.lang === language);
   });
 
+  setTheme(document.documentElement.dataset.theme || getPreferredTheme());
   renderResult();
 }
 
 function getSelectedValue(name) {
   const selected = form.querySelector(`input[name="${name}"]:checked`);
-  return selected ? selected.value : "tear";
+  return selected ? selected.value : "teardrop";
 }
 
 function calculateResult() {
@@ -280,11 +273,8 @@ function calculateResult() {
     };
   }
 
-  const scores = { round: 0, tear: 0, diamond: 0 };
-
-  Object.values(answers).forEach((answer) => {
-    scores[answer] += 1;
-  });
+  const scores = { round: 0, teardrop: 0, diamond: 0 };
+  Object.values(answers).forEach((answer) => scores[answer] += 1);
 
   const sortedScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
   const [winner, score] = sortedScores[0];
@@ -297,7 +287,7 @@ function calculateResult() {
   }
 
   return {
-    key: "tear",
+    key: "teardrop",
     scoreText: getCopy().scoreFallback
   };
 }
@@ -310,13 +300,13 @@ function renderResult() {
   resultScore.textContent = scoreText;
   resultTitle.textContent = data.title;
   resultDescription.textContent = data.description;
+  statShape.textContent = data.shape;
   statSpot.textContent = data.spot;
   statForgiveness.textContent = data.forgiveness;
-  statType.textContent = data.type;
-  racketStage.innerHTML = createRacketSvg(key);
+  racketStage.innerHTML = createRacketSvg(key, data.label);
 }
 
-function createRacketSvg(shape) {
+function createRacketSvg(shape, label) {
   const config = getRacketConfig(shape);
   const holes = createHoles(config);
   const copy = getCopy();
@@ -324,43 +314,45 @@ function createRacketSvg(shape) {
   return `
     <svg viewBox="0 0 360 430" class="racket-shadow" role="img" aria-label="${copy.svgLabel}">
       <defs>
-        <linearGradient id="faceGrad" x1="90" y1="40" x2="270" y2="285" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stop-color="#3A3A40"/>
-          <stop offset=".55" stop-color="#2A2A2E"/>
-          <stop offset="1" stop-color="#171719"/>
+        <linearGradient id="faceGrad" x1="78" y1="24" x2="282" y2="302" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#47474E"/>
+          <stop offset=".46" stop-color="#2A2A2E"/>
+          <stop offset="1" stop-color="#151517"/>
         </linearGradient>
 
-        <linearGradient id="rimGrad" x1="90" y1="40" x2="270" y2="285" gradientUnits="userSpaceOnUse">
+        <linearGradient id="rimGrad" x1="76" y1="20" x2="284" y2="306" gradientUnits="userSpaceOnUse">
           <stop offset="0" stop-color="#FAF8F4"/>
-          <stop offset=".52" stop-color="#D4CFC8"/>
+          <stop offset=".48" stop-color="#D4CFC8"/>
           <stop offset="1" stop-color="#8D8580"/>
         </linearGradient>
 
-        <linearGradient id="gripGrad" x1="154" y1="260" x2="206" y2="404" gradientUnits="userSpaceOnUse">
+        <linearGradient id="gripGrad" x1="154" y1="258" x2="206" y2="405" gradientUnits="userSpaceOnUse">
           <stop offset="0" stop-color="#FAF8F4"/>
           <stop offset=".35" stop-color="#D4CFC8"/>
           <stop offset="1" stop-color="#8B817A"/>
         </linearGradient>
 
         <radialGradient id="spotGrad" cx="50%" cy="50%" r="50%">
-          <stop offset="0" stop-color="#D9954F" stop-opacity=".88"/>
-          <stop offset=".55" stop-color="#C07B3A" stop-opacity=".34"/>
+          <stop offset="0" stop-color="#D9954F" stop-opacity=".9"/>
+          <stop offset=".56" stop-color="#C07B3A" stop-opacity=".35"/>
           <stop offset="1" stop-color="#C07B3A" stop-opacity="0"/>
         </radialGradient>
       </defs>
 
-      <path d="M160 256 C164 284 164 331 160 392 C171 404 189 404 200 392 C196 331 196 284 200 256Z" fill="url(#gripGrad)"/>
-      <path d="M164 306 L196 286 M164 331 L196 311 M164 356 L196 336 M164 381 L196 361" stroke="#0E0E0F" stroke-width="4" opacity=".35" stroke-linecap="round"/>
-      <path d="M151 251 C168 262 192 262 209 251" fill="none" stroke="#C07B3A" stroke-width="5" stroke-linecap="round"/>
+      <path d="M160 256 C164 286 164 333 160 394 C171 406 189 406 200 394 C196 333 196 286 200 256Z" fill="url(#gripGrad)"/>
+      <path d="M164 305 L196 286 M164 331 L196 312 M164 357 L196 338 M164 383 L196 364" stroke="#0E0E0F" stroke-width="4" opacity=".35" stroke-linecap="round"/>
+      <path d="M150 252 C166 264 194 264 210 252" fill="none" stroke="#C07B3A" stroke-width="5" stroke-linecap="round"/>
 
       ${config.face}
-      <path class="edge-line" d="M112 90 C145 59 214 59 248 91" fill="none" stroke="#FAF8F4" stroke-width="2"/>
+      ${config.innerLine}
       ${holes}
 
-      <circle cx="180" cy="${config.spotY}" r="74" fill="url(#spotGrad)" class="copper-glow"/>
-      <circle cx="180" cy="${config.spotY}" r="31" fill="#C07B3A" opacity=".48"/>
+      <circle cx="180" cy="${config.spotY}" r="${config.spotRadius}" fill="url(#spotGrad)" class="copper-glow"/>
+      <circle cx="180" cy="${config.spotY}" r="${Math.round(config.spotRadius * 0.42)}" fill="#C07B3A" opacity=".48"/>
       <circle cx="180" cy="${config.spotY}" r="10" fill="#D9954F"/>
-      <text x="180" y="337" text-anchor="middle" fill="#FAF8F4" font-family="DM Mono" font-size="17">${copy.svgText}</text>
+
+      <text x="180" y="335" text-anchor="middle" class="shape-label">${label}</text>
+      <text x="180" y="355" text-anchor="middle" fill="#FAF8F4" font-family="DM Mono" font-size="15">${copy.svgText}</text>
     </svg>
   `;
 }
@@ -369,45 +361,54 @@ function getRacketConfig(shape) {
   if (shape === "round") {
     return {
       spotY: 150,
+      spotRadius: 80,
       centerY: 145,
-      radiusX: 105,
-      radiusY: 112,
+      radiusX: 108,
+      radiusY: 108,
       face:
-        '<ellipse class="racket-face" cx="180" cy="145" rx="116" ry="124" fill="url(#faceGrad)" stroke="url(#rimGrad)" stroke-width="7"/>'
+        '<circle class="racket-face racket-rim" cx="180" cy="145" r="113" fill="url(#faceGrad)" stroke="url(#rimGrad)" stroke-width="8"/>',
+      innerLine:
+        '<circle class="edge-line" cx="180" cy="145" r="92" fill="none" stroke="#FAF8F4" stroke-width="2"/>'
     };
   }
 
   if (shape === "diamond") {
     return {
-      spotY: 98,
-      centerY: 138,
-      radiusX: 96,
-      radiusY: 122,
+      spotY: 92,
+      spotRadius: 54,
+      centerY: 136,
+      radiusX: 92,
+      radiusY: 118,
       face:
-        '<path class="racket-face" d="M180 25 C252 64 282 139 245 210 C227 245 202 271 180 292 C158 271 133 245 115 210 C78 139 108 64 180 25Z" fill="url(#faceGrad)" stroke="url(#rimGrad)" stroke-width="7"/>'
+        '<path class="racket-face racket-rim" d="M180 19 L232 49 C268 70 288 110 282 153 C276 199 236 250 180 301 C124 250 84 199 78 153 C72 110 92 70 128 49 Z" fill="url(#faceGrad)" stroke="url(#rimGrad)" stroke-width="8" stroke-linejoin="round"/>',
+      innerLine:
+        '<path class="edge-line" d="M180 47 L220 70 C247 86 262 116 257 151 C253 188 222 228 180 267 C138 228 107 188 103 151 C98 116 113 86 140 70 Z" fill="none" stroke="#FAF8F4" stroke-width="2" stroke-linejoin="round"/>'
     };
   }
 
   return {
-    spotY: 126,
+    spotY: 121,
+    spotRadius: 66,
     centerY: 145,
-    radiusX: 100,
-    radiusY: 125,
+    radiusX: 99,
+    radiusY: 124,
     face:
-      '<path class="racket-face" d="M180 28 C250 47 288 122 266 190 C252 232 217 264 180 294 C143 264 108 232 94 190 C72 122 110 47 180 28Z" fill="url(#faceGrad)" stroke="url(#rimGrad)" stroke-width="7"/>'
+      '<path class="racket-face racket-rim" d="M180 23 C238 24 276 77 278 137 C281 211 229 264 180 302 C131 264 79 211 82 137 C84 77 122 24 180 23Z" fill="url(#faceGrad)" stroke="url(#rimGrad)" stroke-width="8"/>',
+    innerLine:
+      '<path class="edge-line" d="M180 52 C226 53 251 94 253 139 C255 195 215 236 180 267 C145 236 105 195 107 139 C109 94 134 53 180 52Z" fill="none" stroke="#FAF8F4" stroke-width="2"/>'
   };
 }
 
 function createHoles(config) {
   const holes = [];
 
-  for (let y = 70; y <= 225; y += 25) {
-    for (let x = 118; x <= 243; x += 25) {
+  for (let y = 68; y <= 226; y += 24) {
+    for (let x = 120; x <= 240; x += 24) {
       const dx = (x - 180) / config.radiusX;
       const dy = (y - config.centerY) / config.radiusY;
 
-      if (dx * dx + dy * dy < 0.68) {
-        holes.push(`<circle class="hole" cx="${x}" cy="${y}" r="4.7"/>`);
+      if (dx * dx + dy * dy < 0.66) {
+        holes.push(`<circle class="hole" cx="${x}" cy="${y}" r="4.5"/>`);
       }
     }
   }
