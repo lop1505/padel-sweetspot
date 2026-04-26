@@ -41,15 +41,30 @@
       <div class="shape-scale"><span>Control</span><span>Mix</span><span>Power</span></div>
       <div class="shape-preview">
         <article class="shape-card-mini">
-          <div class="mini-racket mini-round"><span></span></div>
+          <svg class="mini-svg" viewBox="0 0 120 160" aria-hidden="true">
+            <defs><radialGradient id="spotRound" cx="50%" cy="50%" r="55%"><stop offset="0" stop-color="#D9954F"/><stop offset="1" stop-color="#C07B3A" stop-opacity="0"/></radialGradient></defs>
+            <circle cx="60" cy="58" r="44" class="mini-face"/>
+            <circle cx="60" cy="58" r="28" fill="url(#spotRound)"/>
+            <path d="M51 96 C55 103 65 103 69 96 L73 145 C66 151 54 151 47 145Z" class="mini-grip"/>
+          </svg>
           <div><span>01</span><strong>Round</strong><small>large centered sweetspot</small></div>
         </article>
         <article class="shape-card-mini is-featured">
-          <div class="mini-racket mini-teardrop"><span></span></div>
+          <svg class="mini-svg" viewBox="0 0 120 160" aria-hidden="true">
+            <defs><radialGradient id="spotTear" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#D9954F"/><stop offset="1" stop-color="#C07B3A" stop-opacity="0"/></radialGradient></defs>
+            <path d="M60 12 C94 12 108 42 103 72 C98 103 75 122 60 134 C45 122 22 103 17 72 C12 42 26 12 60 12Z" class="mini-face"/>
+            <ellipse cx="60" cy="64" rx="31" ry="22" fill="url(#spotTear)"/>
+            <path d="M51 116 C55 123 65 123 69 116 L73 151 C66 157 54 157 47 151Z" class="mini-grip"/>
+          </svg>
           <div><span>02</span><strong>Teardrop</strong><small>balanced mid-high sweetspot</small></div>
         </article>
         <article class="shape-card-mini">
-          <div class="mini-racket mini-diamond"><span></span></div>
+          <svg class="mini-svg" viewBox="0 0 120 160" aria-hidden="true">
+            <defs><radialGradient id="spotDiamond" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#D9954F"/><stop offset="1" stop-color="#C07B3A" stop-opacity="0"/></radialGradient></defs>
+            <path d="M60 16 C92 16 107 33 111 59 C116 92 82 119 60 136 C38 119 4 92 9 59 C13 33 28 16 60 16Z" class="mini-face"/>
+            <ellipse cx="60" cy="47" rx="36" ry="17" fill="url(#spotDiamond)"/>
+            <path d="M51 117 C55 124 65 124 69 117 L73 151 C66 157 54 157 47 151Z" class="mini-grip"/>
+          </svg>
           <div><span>03</span><strong>Diamond</strong><small>high power sweetspot</small></div>
         </article>
       </div>
@@ -63,7 +78,6 @@
     <section id="selector" class="selector-grid">
       <form class="card question-card" id="sweetspotForm">
         <div class="app-section-title"><span>01</span><strong>Profile</strong></div>
-
         <div class="question-block">
           <p class="question-label" data-i18n="q1Label">01 · Treffqualität</p>
           <h3 data-i18n="q1Title">Wie konstant triffst du den Ball?</h3>
@@ -73,16 +87,11 @@
             <label class="option"><input type="radio" name="hit" value="diamond"><span><strong data-i18n="q1DiamondTitle">Sehr konstant</strong><small data-i18n="q1DiamondCopy">Ich treffe präzise und kann mehr Risiko nehmen.</small></span></label>
           </div>
         </div>
-
         <div class="question-block slider-block">
           <p class="question-label" data-i18n="sliderLabel">02 · Spieltyp</p>
           <h3 data-i18n="sliderTitle">Wo liegst du zwischen Kontrolle und Power?</h3>
-          <div class="range-wrap">
-            <div class="range-labels"><span data-i18n="sliderControl">Kontrolle</span><strong id="sliderValue">Mix</strong><span data-i18n="sliderPower">Power</span></div>
-            <input id="playstyleRange" class="playstyle-range" type="range" min="0" max="100" value="50" step="1" aria-label="Control to power slider">
-          </div>
+          <div class="range-wrap"><div class="range-labels"><span data-i18n="sliderControl">Kontrolle</span><strong id="sliderValue">Mix</strong><span data-i18n="sliderPower">Power</span></div><input id="playstyleRange" class="playstyle-range" type="range" min="0" max="100" value="50" step="1" aria-label="Control to power slider"></div>
         </div>
-
         <div class="question-block">
           <p class="question-label" data-i18n="q3Label">03 · Position</p>
           <h3 data-i18n="q3Title">Wo spielst du häufiger?</h3>
@@ -92,25 +101,17 @@
             <label class="option"><input type="radio" name="side" value="diamond"><span><strong data-i18n="q3DiamondTitle">Links / offensiver</strong><small data-i18n="q3DiamondCopy">Ich spiele öfter Abschluss und Druck.</small></span></label>
           </div>
         </div>
-
         <div class="form-actions"><button type="reset" class="secondary-button" data-i18n="resetButton">Zurücksetzen</button><p class="logic-note" data-i18n="logicNote">Sonderregel: Wenn du oft Off-Center triffst, gewinnt Rund automatisch.</p></div>
       </form>
-
       <aside class="card result-card" aria-live="polite">
         <div class="result-toolbar"><div class="result-meta"><span class="badge" id="resultBadge">Tropfen</span><span class="score" id="resultScore">2 / 3 Signale</span></div><button type="button" class="share-button" id="shareButton">Share</button></div>
-        <h2 id="resultTitle">Tropfenform</h2>
-        <p id="resultDescription">Tropfenförmige Schläger sind sichtbar länger als runde Schläger, bleiben aber harmonisch ausgewogen.</p>
+        <h2 id="resultTitle">Tropfenform</h2><p id="resultDescription">Tropfenförmige Schläger sind sichtbar länger als runde Schläger, bleiben aber harmonisch ausgewogen.</p>
         <div class="racket-stage" id="racketStage" aria-label="Visualisierung der Sweetspot-Position"></div>
         <div class="result-stats"><div><span data-i18n="statShapeLabel">Form</span><strong id="statShape">Tropfen</strong></div><div><span data-i18n="statSpotLabel">Sweetspot</span><strong id="statSpot">leicht erhöht</strong></div><div><span data-i18n="statForgivenessLabel">Fehlerverzeihung</span><strong id="statForgiveness">mittel bis gut</strong></div></div>
         <div class="why-card"><span data-i18n="whyResultLabel">Warum diese Empfehlung?</span><p id="whyResult">Deine Eingaben zeigen ein ausgewogenes Profil.</p></div>
-        <div class="compare-grid" aria-label="Shape comparison">
-          <article class="compare-card" id="compareSafe"><span data-i18n="compareSafeLabel">Sicherer</span><strong>Round</strong></article>
-          <article class="compare-card is-best" id="compareBest"><span data-i18n="compareBestLabel">Best Match</span><strong>Teardrop</strong></article>
-          <article class="compare-card" id="compareRisk"><span data-i18n="compareRiskLabel">Aggressiver</span><strong>Diamond</strong></article>
-        </div>
+        <div class="compare-grid" aria-label="Shape comparison"><article class="compare-card" id="compareSafe"><span data-i18n="compareSafeLabel">Sicherer</span><strong>Round</strong></article><article class="compare-card is-best" id="compareBest"><span data-i18n="compareBestLabel">Best Match</span><strong>Teardrop</strong></article><article class="compare-card" id="compareRisk"><span data-i18n="compareRiskLabel">Aggressiver</span><strong>Diamond</strong></article></div>
       </aside>
     </section>
-
     <footer class="footer"><span data-i18n="footerAuthor">Built by Patrick Lohmann</span><span data-i18n="footerLicense">MIT License</span></footer>
   </main>
   <script src="script.js"></script>
