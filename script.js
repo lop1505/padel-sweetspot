@@ -249,7 +249,7 @@
     dom.statShape.textContent = r.shape;
     dom.statSpot.textContent = r.spot;
     dom.statForgiveness.textContent = r.forgiveness;
-    dom.stage.innerHTML = racketSvg(result.key, r.label);
+    dom.stage.innerHTML = racketImage(result.key, r.label);
     if (dom.why) dom.why.textContent = whyText(result.key);
     if (dom.compareSafe) dom.compareSafe.textContent = c.results.round.badge;
     if (dom.compareBest) dom.compareBest.textContent = r.badge;
@@ -300,30 +300,18 @@
     if (power && dom.range) dom.range.value = Math.max(0, Math.min(100, Number(power)));
   }
 
-  function racketSvg(shape, label) {
-    const cfg = racketConfig(shape);
-    return '<svg viewBox="0 0 360 430" class="racket-shadow" role="img" aria-label="Padel racket">' +
-      '<defs><linearGradient id="faceGrad" x1="70" y1="20" x2="290" y2="310" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#44444B"/><stop offset=".5" stop-color="#2A2A2E"/><stop offset="1" stop-color="#141416"/></linearGradient><linearGradient id="rimGrad" x1="70" y1="20" x2="290" y2="310" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FAF8F4"/><stop offset=".55" stop-color="#D4CFC8"/><stop offset="1" stop-color="#8D8580"/></linearGradient><linearGradient id="gripGrad" x1="154" y1="250" x2="206" y2="405" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FAF8F4"/><stop offset=".45" stop-color="#D4CFC8"/><stop offset="1" stop-color="#8B817A"/></linearGradient><radialGradient id="spotGrad"><stop offset="0" stop-color="#D9954F" stop-opacity=".95"/><stop offset=".55" stop-color="#C07B3A" stop-opacity=".42"/><stop offset="1" stop-color="#C07B3A" stop-opacity="0"/></radialGradient><pattern id="carbon" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><rect width="14" height="14" fill="transparent"/><path d="M0 0H14" stroke="#FAF8F4" stroke-opacity=".045" stroke-width="4"/></pattern></defs>' +
-      '<path d="M150 250 C160 266 200 266 210 250 L205 302 C200 330 197 360 200 394 C190 406 170 406 160 394 C163 360 160 330 155 302 Z" fill="url(#gripGrad)"/><path d="M162 306 L198 286 M162 333 L198 313 M162 360 L198 340 M162 387 L198 367" stroke="#0E0E0F" stroke-width="4" opacity=".32" stroke-linecap="round"/><path d="M132 232 C150 253 210 253 228 232" fill="none" stroke="#C07B3A" stroke-width="5" stroke-linecap="round"/>' +
-      cfg.face + cfg.innerLine + '<path d="' + cfg.path + '" fill="url(#carbon)" opacity=".9"/>' + holes(cfg) + '<ellipse cx="180" cy="' + cfg.spotY + '" rx="' + cfg.spotRx + '" ry="' + cfg.spotRy + '" fill="url(#spotGrad)" class="copper-glow"/><ellipse cx="180" cy="' + cfg.spotY + '" rx="' + Math.round(cfg.spotRx * .42) + '" ry="' + Math.round(cfg.spotRy * .42) + '" fill="#C07B3A" opacity=".55"/><circle cx="180" cy="' + cfg.spotY + '" r="9" fill="#D9954F"/><text x="180" y="335" text-anchor="middle" class="shape-label">' + label + '</text><text x="180" y="355" text-anchor="middle" fill="#FAF8F4" font-family="DM Mono" font-size="15">Sweetspot</text></svg>';
-  }
-
-  function racketConfig(shape) {
-    if (shape === "round") { const p = 'M180 34 C244 34 296 86 296 150 C296 214 244 266 180 266 C116 266 64 214 64 150 C64 86 116 34 180 34Z'; return { path:p, centerY:150, rx:110, ry:110, spotY:150, spotRx:76, spotRy:76, face:'<path class="racket-face racket-rim" d="'+p+'" fill="url(#faceGrad)" stroke="url(#rimGrad)" stroke-width="8"/>', innerLine:'<path class="edge-line" d="M180 56 C232 56 274 98 274 150 C274 202 232 244 180 244 C128 244 86 202 86 150 C86 98 128 56 180 56Z" fill="none" stroke="#FAF8F4" stroke-width="2"/>' }; }
-    if (shape === "diamond") { const p = 'M180 45 C235 45 276 70 294 116 C314 168 278 230 228 270 C208 286 190 301 180 312 C170 301 152 286 132 270 C82 230 46 168 66 116 C84 70 125 45 180 45Z'; return { path:p, centerY:154, rx:104, ry:118, spotY:108, spotRx:78, spotRy:34, face:'<path class="racket-face racket-rim" d="'+p+'" fill="url(#faceGrad)" stroke="url(#rimGrad)" stroke-width="8"/>', innerLine:'<path class="edge-line" d="M180 67 C222 67 253 86 267 122 C282 161 253 209 214 240 C199 253 186 264 180 271 C174 264 161 253 146 240 C107 209 78 161 93 122 C107 86 138 67 180 67Z" fill="none" stroke="#FAF8F4" stroke-width="2"/>' }; }
-    const p = 'M180 35 C240 35 282 83 286 140 C291 215 233 269 180 310 C127 269 69 215 74 140 C78 83 120 35 180 35Z'; return { path:p, centerY:151, rx:102, ry:125, spotY:132, spotRx:70, spotRy:46, face:'<path class="racket-face racket-rim" d="'+p+'" fill="url(#faceGrad)" stroke="url(#rimGrad)" stroke-width="8"/>', innerLine:'<path class="edge-line" d="M180 57 C226 57 256 94 260 139 C264 197 218 241 180 271 C142 241 96 197 100 139 C104 94 134 57 180 57Z" fill="none" stroke="#FAF8F4" stroke-width="2"/>' };
-  }
-
-  function holes(cfg) {
-    const out = [];
-    for (let y = 70; y <= 228; y += 24) {
-      for (let x = 108; x <= 252; x += 24) {
-        const dx = (x - 180) / cfg.rx;
-        const dy = (y - cfg.centerY) / cfg.ry;
-        if (dx * dx + dy * dy < 0.72) out.push('<circle class="hole" cx="' + x + '" cy="' + y + '" r="4.6"/>');
-      }
-    }
-    return out.join('');
+  function racketImage(shape, label) {
+    const images = {
+      round: "ChatGPT Image 26. Apr. 2026, 20_17_42.png",
+      teardrop: "ChatGPT Image 26. Apr. 2026, 20_18_02.png",
+      diamond: "ChatGPT Image 26. Apr. 2026, 20_16_56.png"
+    };
+    const spotClass = "sweetspot-marker sweetspot-marker-" + shape;
+    return '<figure class="racket-photo racket-photo-' + shape + '">' +
+      '<img src="' + images[shape] + '" alt="' + label + ' padel racket">' +
+      '<span class="' + spotClass + '" aria-hidden="true"></span>' +
+      '<figcaption><strong>' + label + '</strong><span>Sweetspot</span></figcaption>' +
+      '</figure>';
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
