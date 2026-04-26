@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" data-theme="light">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Finde deinen idealen Padel-Schläger-Sweetspot in Sekunden — basierend darauf, wie du wirklich spielst." />
+  <meta name="description" content="Finde deinen idealen Padel-Schläger-Sweetspot in Sekunden." />
   <title>Padel Sweetspot Selector</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,22 +16,22 @@
 <body>
   <main class="page-shell">
     <header class="topbar">
-      <a class="brand" href="#" aria-label="Padel Sweetspot Selector">Sweetspot</a>
+      <a class="brand" href="#top" aria-label="Padel Sweetspot Selector">Sweetspot</a>
 
       <div class="topbar-actions">
         <button type="button" class="theme-button" id="themeToggle" aria-label="Toggle dark mode">
-          <span class="theme-icon" aria-hidden="true">☾</span>
-          <span data-i18n="themeToggle">Dark</span>
+          <span id="themeIcon" aria-hidden="true">☾</span>
+          <span id="themeText">Dark</span>
         </button>
 
         <div class="language-toggle" role="group" aria-label="Language selector">
-          <button type="button" class="language-button active" data-lang="de">DE</button>
+          <button type="button" class="language-button is-active" data-lang="de">DE</button>
           <button type="button" class="language-button" data-lang="en">EN</button>
         </div>
       </div>
     </header>
 
-    <section class="hero">
+    <section class="hero" id="top">
       <p class="eyebrow" data-i18n="heroEyebrow">Padel Racket Tool</p>
       <h1 data-i18n="heroTitle">Finde deinen echten Padel Sweetspot</h1>
       <p class="hero-copy" data-i18n="heroCopy">
@@ -40,10 +40,10 @@
       <a class="hero-cta" href="#selector" data-i18n="heroCta">Selector starten</a>
     </section>
 
-    <section class="why-section" aria-labelledby="why-title">
+    <section class="why-section" aria-labelledby="whyTitle">
       <div>
         <p class="eyebrow" data-i18n="whyEyebrow">Warum das wichtig ist</p>
-        <h2 id="why-title" data-i18n="whyTitle">Dein Schläger sollte dazu passen, wie du wirklich spielst.</h2>
+        <h2 id="whyTitle" data-i18n="whyTitle">Dein Schläger sollte dazu passen, wie du wirklich spielst.</h2>
       </div>
       <p data-i18n="whyCopy">
         Beantworte drei kurze Fragen. Der Selector kombiniert Treffqualität, Spielstil und Position zu einer visuellen Empfehlung.
@@ -58,7 +58,7 @@
 
           <div class="option-grid">
             <label class="option">
-              <input type="radio" name="hit" value="round" />
+              <input type="radio" name="hit" value="round">
               <span>
                 <strong data-i18n="q1RoundTitle">Oft unsauber / Off-Center</strong>
                 <small data-i18n="q1RoundCopy">Ich brauche maximale Fehlerverzeihung.</small>
@@ -66,15 +66,15 @@
             </label>
 
             <label class="option">
-              <input type="radio" name="hit" value="teardrop" checked />
+              <input type="radio" name="hit" value="teardrop" checked>
               <span>
-                <strong data-i18n="q1TearTitle">Meistens sauber</strong>
-                <small data-i18n="q1TearCopy">Ich treffe gut, aber nicht immer perfekt.</small>
+                <strong data-i18n="q1TeardropTitle">Meistens sauber</strong>
+                <small data-i18n="q1TeardropCopy">Ich treffe gut, aber nicht immer perfekt.</small>
               </span>
             </label>
 
             <label class="option">
-              <input type="radio" name="hit" value="diamond" />
+              <input type="radio" name="hit" value="diamond">
               <span>
                 <strong data-i18n="q1DiamondTitle">Sehr konstant</strong>
                 <small data-i18n="q1DiamondCopy">Ich treffe präzise und kann mehr Risiko nehmen.</small>
@@ -89,7 +89,7 @@
 
           <div class="option-grid">
             <label class="option">
-              <input type="radio" name="style" value="round" />
+              <input type="radio" name="style" value="round">
               <span>
                 <strong data-i18n="q2RoundTitle">Kontrolle & Sicherheit</strong>
                 <small data-i18n="q2RoundCopy">Weniger Fehler, bessere Platzierung.</small>
@@ -97,15 +97,15 @@
             </label>
 
             <label class="option">
-              <input type="radio" name="style" value="teardrop" checked />
+              <input type="radio" name="style" value="teardrop" checked>
               <span>
-                <strong data-i18n="q2TearTitle">Ausgewogen</strong>
-                <small data-i18n="q2TearCopy">Kontrolle behalten, aber mehr Druck machen.</small>
+                <strong data-i18n="q2TeardropTitle">Ausgewogen</strong>
+                <small data-i18n="q2TeardropCopy">Kontrolle behalten, aber mehr Druck machen.</small>
               </span>
             </label>
 
             <label class="option">
-              <input type="radio" name="style" value="diamond" />
+              <input type="radio" name="style" value="diamond">
               <span>
                 <strong data-i18n="q2DiamondTitle">Attacke & Smash</strong>
                 <small data-i18n="q2DiamondCopy">Ich will Punkte aktiver beenden.</small>
@@ -120,7 +120,7 @@
 
           <div class="option-grid">
             <label class="option">
-              <input type="radio" name="side" value="round" />
+              <input type="radio" name="side" value="round">
               <span>
                 <strong data-i18n="q3RoundTitle">Rechts / Aufbau</strong>
                 <small data-i18n="q3RoundCopy">Ich kontrolliere Ballwechsel und bereite vor.</small>
@@ -128,15 +128,15 @@
             </label>
 
             <label class="option">
-              <input type="radio" name="side" value="teardrop" checked />
+              <input type="radio" name="side" value="teardrop" checked>
               <span>
-                <strong data-i18n="q3TearTitle">Flexibel / beide Seiten</strong>
-                <small data-i18n="q3TearCopy">Ich brauche ein breites Einsatzfenster.</small>
+                <strong data-i18n="q3TeardropTitle">Flexibel / beide Seiten</strong>
+                <small data-i18n="q3TeardropCopy">Ich brauche ein breites Einsatzfenster.</small>
               </span>
             </label>
 
             <label class="option">
-              <input type="radio" name="side" value="diamond" />
+              <input type="radio" name="side" value="diamond">
               <span>
                 <strong data-i18n="q3DiamondTitle">Links / offensiver</strong>
                 <small data-i18n="q3DiamondCopy">Ich spiele öfter Abschluss und Druck.</small>
@@ -161,7 +161,7 @@
 
         <h2 id="resultTitle">Tropfenform</h2>
         <p id="resultDescription">
-          Tropfenförmige Schläger sitzen zwischen Rund und Diamant. Der Sweetspot liegt leicht oberhalb der Mitte und verbindet Kontrolle mit zusätzlicher Power.
+          Tropfenförmige Schläger sind sichtbar länger als runde Schläger, bleiben aber harmonisch ausgewogen.
         </p>
 
         <div class="racket-stage" id="racketStage" aria-label="Visualisierung der Sweetspot-Position"></div>
