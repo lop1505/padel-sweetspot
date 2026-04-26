@@ -1,37 +1,207 @@
-const resultData = {
-  round: {
-    badge: "Round",
-    title: "Control Sweetspot",
-    description:
-      "Der Sweetspot liegt zentral und ist groß. Ideal, wenn du Fehler minimieren, ruhiger aufbauen und kontrollierter spielen willst.",
-    spot: "zentral & groß",
-    forgiveness: "sehr hoch",
-    type: "Kontrolle / Sicherheit",
-    shape: "round"
+const translations = {
+  de: {
+    pageTitle: "Padel Sweetspot Selector",
+    metaDescription:
+      "Finde deinen idealen Padel-Schläger-Sweetspot in Sekunden — basierend darauf, wie du wirklich spielst.",
+
+    themeToggle: "Dark",
+    themeToggleLight: "Light",
+
+    themeToggle: "Dark",
+    themeToggleLight: "Light",
+
+    heroEyebrow: "Padel Racket Tool",
+    heroTitle: "Finde deinen echten Padel Sweetspot",
+    heroCopy:
+      "Viele Spieler wählen die falsche Schlägerform. Nicht wegen fehlender Technik — sondern weil der Sweetspot nicht zu ihrem Spiel passt.",
+    heroCta: "Selector starten",
+
+    whyEyebrow: "Warum das wichtig ist",
+    whyTitle: "Dein Schläger sollte dazu passen, wie du wirklich spielst.",
+    whyCopy:
+      "Beantworte drei kurze Fragen. Der Selector kombiniert Treffqualität, Spielstil und Position zu einer visuellen Empfehlung.",
+
+    q1Label: "01 · Treffqualität",
+    q1Title: "Wie konstant triffst du den Ball?",
+    q1RoundTitle: "Oft unsauber / Off-Center",
+    q1RoundCopy: "Ich brauche maximale Fehlerverzeihung.",
+    q1TearTitle: "Meistens sauber",
+    q1TearCopy: "Ich treffe gut, aber nicht immer perfekt.",
+    q1DiamondTitle: "Sehr konstant",
+    q1DiamondCopy: "Ich treffe präzise und kann mehr Risiko nehmen.",
+
+    q2Label: "02 · Spiel-Fokus",
+    q2Title: "Was ist dein primärer Fokus?",
+    q2RoundTitle: "Kontrolle & Sicherheit",
+    q2RoundCopy: "Weniger Fehler, bessere Platzierung.",
+    q2TearTitle: "Ausgewogen",
+    q2TearCopy: "Kontrolle behalten, aber mehr Druck machen.",
+    q2DiamondTitle: "Attacke & Smash",
+    q2DiamondCopy: "Ich will Punkte aktiver beenden.",
+
+    q3Label: "03 · Position",
+    q3Title: "Wo spielst du häufiger?",
+    q3RoundTitle: "Rechts / Aufbau",
+    q3RoundCopy: "Ich kontrolliere Ballwechsel und bereite vor.",
+    q3TearTitle: "Flexibel / beide Seiten",
+    q3TearCopy: "Ich brauche ein breites Einsatzfenster.",
+    q3DiamondTitle: "Links / offensiver",
+    q3DiamondCopy: "Ich spiele öfter Abschluss und Druck.",
+
+    resetButton: "Zurücksetzen",
+    logicNote:
+      "Sonderregel: Wenn du oft Off-Center triffst, gewinnt Round automatisch.",
+
+    statSpotLabel: "Sweetspot",
+    statForgivenessLabel: "Fehlerverzeihung",
+    statTypeLabel: "Typ",
+
+    footerAuthor: "Built by Patrick Lohmann",
+    footerLicense: "MIT License",
+
+    scoreOffCenter: "Off-Center-Regel aktiv",
+    scoreSignals: "{score} / 3 Signale",
+    scoreFallback: "Balance-Fallback",
+
+    svgLabel: "Padel-Schläger mit Sweetspot",
+    svgText: "Sweetspot",
+
+    results: {
+      round: {
+        badge: "Round",
+        title: "Control Sweetspot",
+        description:
+          "Der Sweetspot liegt zentral und ist groß. Ideal, wenn du Fehler minimieren, ruhiger aufbauen und kontrollierter spielen willst.",
+        spot: "zentral & groß",
+        forgiveness: "sehr hoch",
+        type: "Kontrolle / Sicherheit"
+      },
+      tear: {
+        badge: "Hybrid",
+        title: "Balanced Sweetspot",
+        description:
+          "Der Sweetspot liegt leicht oberhalb der Mitte. Das ist der beste Kompromiss aus Kontrolle, Fehlerverzeihung und zusätzlicher Power.",
+        spot: "leicht erhöht",
+        forgiveness: "mittel bis gut",
+        type: "Allround / Fortschritt"
+      },
+      diamond: {
+        badge: "Power",
+        title: "Attack Sweetspot",
+        description:
+          "Der Sweetspot liegt höher im Schlägerkopf und ist kleiner. Das bringt mehr Power, bestraft aber unsaubere Treffer stärker.",
+        spot: "hoch & kleiner",
+        forgiveness: "niedriger",
+        type: "Power / Angriff"
+      }
+    }
   },
-  tear: {
-    badge: "Hybrid",
-    title: "Balanced Sweetspot",
-    description:
-      "Der Sweetspot liegt leicht oberhalb der Mitte. Das ist der beste Kompromiss aus Kontrolle, Fehlerverzeihung und zusätzlicher Power.",
-    spot: "leicht erhöht",
-    forgiveness: "mittel bis gut",
-    type: "Allround / Fortschritt",
-    shape: "tear"
-  },
-  diamond: {
-    badge: "Power",
-    title: "Attack Sweetspot",
-    description:
-      "Der Sweetspot liegt höher im Schlägerkopf und ist kleiner. Das bringt mehr Power, bestraft aber unsaubere Treffer stärker.",
-    spot: "hoch & kleiner",
-    forgiveness: "niedriger",
-    type: "Power / Angriff",
-    shape: "diamond"
+
+  en: {
+    themeToggle: "Dark",
+    themeToggleLight: "Light",
+
+    pageTitle: "Padel Sweetspot Selector",
+    metaDescription:
+      "Find your ideal padel racket sweetspot in seconds — based on how you actually play.",
+
+    themeToggle: "Dark",
+    themeToggleLight: "Light",
+
+    heroEyebrow: "Padel Racket Tool",
+    heroTitle: "Find Your Real Padel Sweetspot",
+    heroCopy:
+      "Most players choose the wrong racket shape. Not because of skill — but because the sweetspot does not fit their game.",
+    heroCta: "Start the Selector",
+
+    whyEyebrow: "Why it matters",
+    whyTitle: "Your racket should match how you actually play.",
+    whyCopy:
+      "Answer three quick questions. The selector combines your consistency, playstyle and court position into a visual recommendation.",
+
+    q1Label: "01 · Shot quality",
+    q1Title: "How consistently do you hit the ball?",
+    q1RoundTitle: "Often off-center",
+    q1RoundCopy: "I need maximum forgiveness.",
+    q1TearTitle: "Mostly clean",
+    q1TearCopy: "I hit well, but not perfectly every time.",
+    q1DiamondTitle: "Very consistent",
+    q1DiamondCopy: "I hit precisely and can take more risk.",
+
+    q2Label: "02 · Play focus",
+    q2Title: "What is your primary focus?",
+    q2RoundTitle: "Control & safety",
+    q2RoundCopy: "Fewer mistakes, better placement.",
+    q2TearTitle: "Balanced",
+    q2TearCopy: "Keep control while adding more pressure.",
+    q2DiamondTitle: "Attack & smash",
+    q2DiamondCopy: "I want to finish points more actively.",
+
+    q3Label: "03 · Position",
+    q3Title: "Where do you play more often?",
+    q3RoundTitle: "Right side / build-up",
+    q3RoundCopy: "I control rallies and set up the point.",
+    q3TearTitle: "Flexible / both sides",
+    q3TearCopy: "I need a broad performance window.",
+    q3DiamondTitle: "Left side / attacking",
+    q3DiamondCopy: "I play more finishing shots and pressure.",
+
+    resetButton: "Reset",
+    logicNote:
+      "Special rule: If you often hit off-center, Round wins automatically.",
+
+    statSpotLabel: "Sweetspot",
+    statForgivenessLabel: "Forgiveness",
+    statTypeLabel: "Type",
+
+    footerAuthor: "Built by Patrick Lohmann",
+    footerLicense: "MIT License",
+
+    scoreOffCenter: "Off-center rule active",
+    scoreSignals: "{score} / 3 signals",
+    scoreFallback: "Balance fallback",
+
+    svgLabel: "Padel racket with sweetspot",
+    svgText: "Sweetspot",
+
+    results: {
+      round: {
+        badge: "Round",
+        title: "Control Sweetspot",
+        description:
+          "The sweetspot is large and centered. Ideal if you want to reduce mistakes, build calmly and play with more control.",
+        spot: "centered & large",
+        forgiveness: "very high",
+        type: "Control / safety"
+      },
+      tear: {
+        badge: "Hybrid",
+        title: "Balanced Sweetspot",
+        description:
+          "The sweetspot sits slightly above the center. It is the best compromise between control, forgiveness and extra power.",
+        spot: "slightly higher",
+        forgiveness: "medium to good",
+        type: "All-round / progress"
+      },
+      diamond: {
+        badge: "Power",
+        title: "Attack Sweetspot",
+        description:
+          "The sweetspot sits higher in the racket head and is smaller. It gives more power, but punishes off-center hits more strongly.",
+        spot: "high & smaller",
+        forgiveness: "lower",
+        type: "Power / attack"
+      }
+    }
   }
 };
 
+let currentLanguage = localStorage.getItem("sweetspotLanguage") || "de";
+
 const form = document.querySelector("#sweetspotForm");
+const languageButtons = document.querySelectorAll(".language-button");
+const themeToggle = document.querySelector("#themeToggle");
+const themeIcon = document.querySelector(".theme-icon");
 const resultBadge = document.querySelector("#resultBadge");
 const resultScore = document.querySelector("#resultScore");
 const resultTitle = document.querySelector("#resultTitle");
@@ -40,6 +210,56 @@ const statSpot = document.querySelector("#statSpot");
 const statForgiveness = document.querySelector("#statForgiveness");
 const statType = document.querySelector("#statType");
 const racketStage = document.querySelector("#racketStage");
+
+function getCopy() {
+  return translations[currentLanguage];
+}
+
+function getPreferredTheme() {
+  const storedTheme = localStorage.getItem("sweetspotTheme");
+
+  if (storedTheme) {
+    return storedTheme;
+  }
+
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+function setTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem("sweetspotTheme", theme);
+
+  const isDark = theme === "dark";
+  themeIcon.textContent = isDark ? "☼" : "☾";
+  themeToggle.querySelector("[data-i18n='themeToggle']").textContent = isDark
+    ? getCopy().themeToggleLight
+    : getCopy().themeToggle;
+  themeToggle.setAttribute("aria-pressed", String(isDark));
+}
+
+function setLanguage(language) {
+  currentLanguage = language;
+  localStorage.setItem("sweetspotLanguage", language);
+
+  document.documentElement.lang = language;
+  document.title = getCopy().pageTitle;
+  document
+    .querySelector('meta[name="description"]')
+    .setAttribute("content", getCopy().metaDescription);
+
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const key = element.dataset.i18n;
+    element.textContent = getCopy()[key];
+  });
+
+  setTheme(document.documentElement.dataset.theme || getPreferredTheme());
+
+  languageButtons.forEach((button) => {
+    button.classList.toggle("active", button.dataset.lang === language);
+  });
+
+  renderResult();
+}
 
 function getSelectedValue(name) {
   const selected = form.querySelector(`input[name="${name}"]:checked`);
@@ -56,7 +276,7 @@ function calculateResult() {
   if (answers.hit === "round") {
     return {
       key: "round",
-      scoreText: "Off-Center-Regel aktiv"
+      scoreText: getCopy().scoreOffCenter
     };
   }
 
@@ -72,19 +292,19 @@ function calculateResult() {
   if (score >= 2) {
     return {
       key: winner,
-      scoreText: `${score} / 3 Signale`
+      scoreText: getCopy().scoreSignals.replace("{score}", score)
     };
   }
 
   return {
     key: "tear",
-    scoreText: "Balance-Fallback"
+    scoreText: getCopy().scoreFallback
   };
 }
 
 function renderResult() {
   const { key, scoreText } = calculateResult();
-  const data = resultData[key];
+  const data = getCopy().results[key];
 
   resultBadge.textContent = data.badge;
   resultScore.textContent = scoreText;
@@ -93,15 +313,16 @@ function renderResult() {
   statSpot.textContent = data.spot;
   statForgiveness.textContent = data.forgiveness;
   statType.textContent = data.type;
-  racketStage.innerHTML = createRacketSvg(data.shape);
+  racketStage.innerHTML = createRacketSvg(key);
 }
 
 function createRacketSvg(shape) {
   const config = getRacketConfig(shape);
   const holes = createHoles(config);
+  const copy = getCopy();
 
   return `
-    <svg viewBox="0 0 360 430" class="racket-shadow" role="img" aria-label="Padel racket with sweetspot">
+    <svg viewBox="0 0 360 430" class="racket-shadow" role="img" aria-label="${copy.svgLabel}">
       <defs>
         <linearGradient id="faceGrad" x1="90" y1="40" x2="270" y2="285" gradientUnits="userSpaceOnUse">
           <stop offset="0" stop-color="#3A3A40"/>
@@ -139,7 +360,7 @@ function createRacketSvg(shape) {
       <circle cx="180" cy="${config.spotY}" r="74" fill="url(#spotGrad)" class="copper-glow"/>
       <circle cx="180" cy="${config.spotY}" r="31" fill="#C07B3A" opacity=".48"/>
       <circle cx="180" cy="${config.spotY}" r="10" fill="#D9954F"/>
-      <text x="180" y="337" text-anchor="middle" fill="#FAF8F4" font-family="DM Mono" font-size="17">Sweetspot</text>
+      <text x="180" y="337" text-anchor="middle" fill="#FAF8F4" font-family="DM Mono" font-size="17">${copy.svgText}</text>
     </svg>
   `;
 }
@@ -147,7 +368,6 @@ function createRacketSvg(shape) {
 function getRacketConfig(shape) {
   if (shape === "round") {
     return {
-      shape,
       spotY: 150,
       centerY: 145,
       radiusX: 105,
@@ -159,7 +379,6 @@ function getRacketConfig(shape) {
 
   if (shape === "diamond") {
     return {
-      shape,
       spotY: 98,
       centerY: 138,
       radiusX: 96,
@@ -170,7 +389,6 @@ function getRacketConfig(shape) {
   }
 
   return {
-    shape,
     spotY: 126,
     centerY: 145,
     radiusX: 100,
@@ -197,9 +415,19 @@ function createHoles(config) {
   return holes.join("");
 }
 
+languageButtons.forEach((button) => {
+  button.addEventListener("click", () => setLanguage(button.dataset.lang));
+});
+
+themeToggle.addEventListener("click", () => {
+  const currentTheme = document.documentElement.dataset.theme || getPreferredTheme();
+  setTheme(currentTheme === "dark" ? "light" : "dark");
+});
+
 form.addEventListener("change", renderResult);
 form.addEventListener("reset", () => {
   window.setTimeout(renderResult, 0);
 });
 
-renderResult();
+setTheme(getPreferredTheme());
+setLanguage(currentLanguage);
