@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Find your ideal padel racket sweetspot in seconds — based on how you actually play." />
+  <title>Padel Sweetspot Selector</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Fraunces:opsz,wght@9..144,300&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <main class="page-shell">
+    <section class="hero">
+      <p class="eyebrow">Padel Racket Tool</p>
+      <h1>Find Your Real Padel Sweetspot</h1>
+      <p class="hero-copy">
+        Most players choose the wrong racket shape. Not because of skill — but because the sweetspot does not fit their game.
+      </p>
+      <a class="hero-cta" href="#selector">Start the Selector</a>
+    </section>
+
+    <section class="why-section" aria-labelledby="why-title">
+      <div>
+        <p class="eyebrow">Why it matters</p>
+        <h2 id="why-title">Your racket should match how you actually play.</h2>
+      </div>
+      <p>
+        Answer three quick questions. The selector combines your consistency, playstyle and court position into a visual recommendation.
+      </p>
+    </section>
+
+    <section id="selector" class="selector-grid">
+      <form class="card question-card" id="sweetspotForm">
+        <div class="question-block">
+          <p class="question-label">01 · Treffqualität</p>
+          <h3>Wie konstant triffst du den Ball?</h3>
+
+          <div class="option-grid">
+            <label class="option">
+              <input type="radio" name="hit" value="round" />
+              <span>
+                <strong>Oft unsauber / Off-Center</strong>
+                <small>Ich brauche maximale Fehlerverzeihung.</small>
+              </span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="hit" value="tear" checked />
+              <span>
+                <strong>Meistens sauber</strong>
+                <small>Ich treffe gut, aber nicht immer perfekt.</small>
+              </span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="hit" value="diamond" />
+              <span>
+                <strong>Sehr konstant</strong>
+                <small>Ich treffe präzise und kann mehr Risiko nehmen.</small>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="question-label">02 · Spiel-Fokus</p>
+          <h3>Was ist dein primärer Fokus?</h3>
+
+          <div class="option-grid">
+            <label class="option">
+              <input type="radio" name="style" value="round" />
+              <span>
+                <strong>Kontrolle & Sicherheit</strong>
+                <small>Weniger Fehler, bessere Platzierung.</small>
+              </span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="style" value="tear" checked />
+              <span>
+                <strong>Ausgewogen</strong>
+                <small>Kontrolle behalten, aber mehr Druck machen.</small>
+              </span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="style" value="diamond" />
+              <span>
+                <strong>Attacke & Smash</strong>
+                <small>Ich will Punkte aktiver beenden.</small>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="question-block">
+          <p class="question-label">03 · Position</p>
+          <h3>Wo spielst du häufiger?</h3>
+
+          <div class="option-grid">
+            <label class="option">
+              <input type="radio" name="side" value="round" />
+              <span>
+                <strong>Rechts / Aufbau</strong>
+                <small>Ich kontrolliere Ballwechsel und bereite vor.</small>
+              </span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="side" value="tear" checked />
+              <span>
+                <strong>Flexibel / beide Seiten</strong>
+                <small>Ich brauche ein breites Einsatzfenster.</small>
+              </span>
+            </label>
+
+            <label class="option">
+              <input type="radio" name="side" value="diamond" />
+              <span>
+                <strong>Links / offensiver</strong>
+                <small>Ich spiele öfter Abschluss und Druck.</small>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="reset" class="secondary-button">Reset</button>
+          <p class="logic-note">
+            Sonderregel: Wenn du oft Off-Center triffst, gewinnt Round automatisch.
+          </p>
+        </div>
+      </form>
+
+      <aside class="card result-card" aria-live="polite">
+        <div class="result-meta">
+          <span class="badge" id="resultBadge">Hybrid</span>
+          <span class="score" id="resultScore">2 / 3 Balance-Signale</span>
+        </div>
+
+        <h2 id="resultTitle">Balanced Sweetspot</h2>
+        <p id="resultDescription">
+          Der Sweetspot liegt leicht oberhalb der Mitte. Das ist der beste Kompromiss aus Kontrolle, Fehlerverzeihung und zusätzlicher Power.
+        </p>
+
+        <div class="racket-stage" id="racketStage" aria-label="Visualisierung der Sweetspot-Position"></div>
+
+        <div class="result-stats">
+          <div>
+            <span>Sweetspot</span>
+            <strong id="statSpot">leicht erhöht</strong>
+          </div>
+          <div>
+            <span>Fehlerverzeihung</span>
+            <strong id="statForgiveness">mittel bis gut</strong>
+          </div>
+          <div>
+            <span>Typ</span>
+            <strong id="statType">Allround / Fortschritt</strong>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="footer">
+      <span>Built by Patrick Lohmann</span>
+      <span>MIT License</span>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
